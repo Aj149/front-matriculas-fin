@@ -1,0 +1,199 @@
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow border border-3" style="border-color: #273063;">
+        <div class="card-body">
+          <div class="text-center mt-3 mb-4 rounded-pill text-white w-100 mx-auto p-2" style="background-color: #273063;">
+            <h2>Editar Estudiante</h2>
+          </div>
+          <form (ngSubmit)="Update()" novalidate #f="ngForm">
+            <!-- Estudiante Section -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nombre_estudiante">Nombre del Estudiante</label>
+                  <input type="text" class="form-control rounded border border-3" id="nombre_estudiante"
+                    name="nombre_estudiante" [(ngModel)]="estudiante.nombre_estudiante" placeholder="Juan Pérez" style="border-color: #273063;">
+                </div>
+                <div class="form-group">
+                  <label for="cedula_estudiante">Cédula del Estudiante</label>
+                  <input type="text" class="form-control rounded border border-3" id="cedula_estudiante"
+                    name="cedula_estudiante" [(ngModel)]="estudiante.cedula_estudiante" placeholder="123456789-0"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" style="border-color: #273063;">
+                </div>
+                <div class="form-group">
+                  <label for="email_estudiante">Email del Estudiante</label>
+                  <input type="email" class="form-control rounded border border-3" id="email_estudiante"
+                    name="email_estudiante" [(ngModel)]="estudiante.email_estudiante" placeholder="ejemplo@gmail.com" style="border-color: #273063;">
+                </div>
+                <div class="form-group">
+                  <label for="numero_estudiante">Teléfono del Estudiante</label>
+                  <input type="text" class="form-control rounded border border-3" id="telefono_estudiante"
+                    name="telefono_estudiante" [(ngModel)]="estudiante.numero_estudiante" placeholder="09 99999999"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" style="border-color: #273063;">
+                </div>
+                <div class="form-group">
+                  <label for="edad_estudiante">Edad</label>
+                  <input type="number" class="form-control rounded border border-3" id="edad_estudiante"
+                    name="edad_estudiante" [(ngModel)]="estudiante.edad_estudiante" placeholder="20"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 2)" style="border-color: #273063;">
+                </div>
+              </div>
+              <!-- Representante Section -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nombre_representante">Nombre del Representante</label>
+                  <input type="text" class="form-control rounded border border-3" id="nombre_representante"
+                    name="nombre_representante" [(ngModel)]="estudiante.representante.nombre_representante"
+                    placeholder="María Pérez" style="border-color: #273063;">
+                </div>
+                <div class="form-group">
+                  <label for="cedula_representante">Cédula del Representante</label>
+                  <input type="text" class="form-control rounded border border-3" id="cedula_representante"
+                    name="cedula_representante" [(ngModel)]="estudiante.representante.cedula_representante"
+                    placeholder="123456789-0" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" style="border-color: #273063;">
+                </div>
+                <div class="form-group">
+                  <label for="email_representante">Email del Representante</label>
+                  <input type="email" class="form-control rounded border border-3" id="email_representante"
+                    name="email_representante" [(ngModel)]="estudiante.representante.email_representante"
+                    placeholder="ejemplo@gmail.com" style="border-color: #273063;">
+                </div>
+                <div class="form-group">
+                  <label for="numero_representante">Teléfono del Representante</label>
+                  <input type="text" class="form-control rounded border border-3" id="telefono_representante"
+                    name="telefono_representante" [(ngModel)]="estudiante.representante.numero_representante" placeholder="09 99999999"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" style="border-color: #273063;">
+                </div>
+              </div>
+            </div>
+
+            <!-- Direccion Section -->
+            <h5 class="mt-4">Direccion</h5>
+            <div class="form-group">
+              <label for="ciudad">Ciudad</label>
+              <input type="text" class="form-control rounded border border-3" id="ciudad" name="ciudad"
+                [(ngModel)]="estudiante.direccion.ciudad" placeholder="Ciudad" style="border-color: #273063;">
+            </div>
+            <div class="form-group">
+              <label for="sector">Sector</label>
+              <select class="form-control rounded border border-3" id="sector" name="sector"
+                [(ngModel)]="estudiante.direccion.sector" style="border-color: #273063;">
+                <option value="" disabled selected>Seleccione un sector</option>
+                <option value="sur">Sur</option>
+                <option value="norte">Norte</option>
+                <option value="centro">Centro</option>
+                <option value="valle">Valle</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="detalle">Detalles de la dirección</label>
+              <input type="text" class="form-control rounded border border-3" id="detalle" name="detalle"
+                [(ngModel)]="estudiante.direccion.detalle" placeholder="Detalles de la dirección" style="border-color: #273063;">
+            </div>
+
+            <!-- Institucion Section -->
+            <h5 class="mt-4">Institucion</h5>
+            <div class="form-group">
+              <label for="nombre_institucion">Nombre de la Institución</label>
+              <input type="text" class="form-control rounded border border-3" id="nombre_institucion"
+                name="nombre_institucion" [(ngModel)]="estudiante.institucion.nombre"
+                placeholder="Nombre de la Institución" style="border-color: #273063;">
+            </div>
+
+            <div class="form-group">
+              <label for="tipo_institucion">Tipo de Institución</label>
+              <select class="form-control rounded border border-3" id="tipo_institucion"
+                name="tipo_institucion" [(ngModel)]="estudiante.institucion.tipo" style="border-color: #273063;">
+                <option value="" disabled selected>Seleccione un tipo</option>
+                <option value="publica">Pública</option>
+                <option value="privada">Privada</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="nivel_institucion">Nivel de Institucion</label>
+              <select name="nivel_institucion" id="nivel_institucion"
+                class="form-control rounded border border-3" [(ngModel)]="estudiante.institucion.nivel" style="border-color: #273063;">
+                <option value="" disabled selected>Seleccione un nivel</option>
+                <option value="escuela">Escuela</option>
+                <option value="colegio">Colegio</option>
+                <option value="universidad">Universidad</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="grado_institucion">Nivel Educativo</label>
+              <select class="form-control rounded border border-3" id="grado_institucion"
+                name="grado_institucion" [(ngModel)]="estudiante.institucion.grado" style="border-color: #273063;">
+                <option value="" disabled selected>Seleccione un nivel educativo</option>
+                <!-- Primary Education -->
+                @if (estudiante.institucion.nivel == 'escuela') {
+                  <optgroup label="Primaria">
+                    <option value="4to">4to de Primaria</option>
+                    <option value="5to">5to de Primaria</option>
+                    <option value="6to">6to de Primaria</option>
+                    <option value="7mo">7mo de Primaria</option>
+                  </optgroup>
+                }
+                @if (estudiante.institucion.nivel == 'colegio') {
+                  <!-- Secondary Education -->
+                  <optgroup label="Secundaria">
+                    <option value="8vo">8vo de Secundaria</option>
+                    <option value="9no">9no de Secundaria</option>
+                    <option value="10mo">10mo de Secundaria</option>
+                  </optgroup>
+                  <!-- High School -->
+                  <optgroup label="Bachillerato">
+                    <option value="1ro_bachillerato">1ro de Bachillerato</option>
+                    <option value="2do_bachillerato">2do de Bachillerato</option>
+                    <option value="3er_bachillerato">3er de Bachillerato</option>
+                  </optgroup>
+                }
+                @if (estudiante.institucion.nivel == 'universidad') {
+                  <!-- University Semesters -->
+                  <optgroup label="Universidad">
+                    <option value="1er_semestre">1er Semestre</option>
+                    <option value="2do_semestre">2do Semestre</option>
+                    <option value="3er_semestre">3er Semestre</option>
+                    <option value="4to_semestre">4to Semestre</option>
+                    <option value="5to_semestre">5to Semestre</option>
+                    <option value="6to_semestre">6to Semestre</option>
+                    <option value="7mo_semestre">7mo Semestre</option>
+                    <option value="8vo_semestre">8vo Semestre</option>
+                  </optgroup>
+                }
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="jornada_institucion">Jornada</label>
+              <select class="form-control rounded border border-3" id="jornada_institucion"
+                name="jornada_institucion" [(ngModel)]="estudiante.institucion.jornada" style="border-color: #273063;">
+                <option value="" disabled selected>Seleccione una jornada</option>
+                <option value="matutino">Matutino</option>
+                <option value="vespertino">Vespertino</option>
+                <option value="nocturno">Nocturno</option>
+              </select>
+            </div>
+            <!-- Buttons Section -->
+            <div class="mt-4">
+              <button type="submit" class="color-boton border-0 mt-4 rounded-pill mb-1 text-white w-100 p-2 h4" style="background-color: #273063;" [disabled]="!f.valid">
+                Editar
+              </button>
+              <button class="btn btn-danger border-0 mt-4 rounded-pill mb-1 text-white w-100 p-2" (click)="volver()">
+                <h5>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                    class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                  </svg>
+                  Volver
+                </h5>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

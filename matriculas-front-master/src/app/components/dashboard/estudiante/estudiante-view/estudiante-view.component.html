@@ -1,0 +1,153 @@
+<div class="container mt-5">
+    <div #content>
+        <h1 class="form-title text-center">Detalle de Nuevo Estudiante</h1>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <h4 class="title-spacing">Datos de Estudiante</h4>
+                    <label for="nombre_estudiante" class="form-label">Nombre Completo</label>
+                    <div class="input-group">
+                        <p class="form-control" id="nombre_estudiante">{{ estudiante.nombre_estudiante }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <h4 class="title-spacing">Datos del Representante</h4>
+                    <label for="nombre_representante" class="form-label">Nombre Completo</label>
+                    <div class="input-group">
+                        <p class="form-control" id="nombre_representante">{{
+                            estudiante.representante.nombre_representante }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="cedula_estudiante" class="form-label">Cédula</label>
+                    <div class="input-group">
+                        <p class="form-control" id="cedula_estudiante">{{ estudiante.cedula_estudiante }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="cedula_representante" class="form-label">Cédula</label>
+                    <div class="input-group">
+                        <p class="form-control" id="cedula_representante">{{
+                            estudiante.representante.cedula_representante }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="email_estudiante" class="form-label">Email</label>
+                    <div class="input-group">
+                        <p class="form-control" id="email_estudiante">{{ estudiante.email_estudiante }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="email_representante" class="form-label">Email</label>
+                    <div class="input-group">
+                        <p class="form-control" id="email_representante">{{ estudiante.representante.email_representante
+                            }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="telefono_estudiante" class="form-label">Teléfono</label>
+                    <div class="input-group">
+                        <p class="form-control" id="telefono_estudiante">{{ estudiante.numero_estudiante }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="telefono_representante" class="form-label">Teléfono</label>
+                    <div class="input-group">
+                        <p class="form-control" id="telefono_representante">{{
+                            estudiante.representante.numero_representante }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="edad_estudiante" class="form-label">Edad</label>
+                    <div class="input-group">
+                        <p class="form-control expanded-width" id="edad_estudiante">{{ estudiante.edad_estudiante }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="title-spacing">Dirección</h4>
+        <div class="mt-3">
+            <label for="ciudad" class="form-label">Ciudad</label>
+            <div class="input-group">
+                <p class="form-control" id="ciudad">{{ estudiante.direccion.ciudad }}</p>
+            </div>
+            <label for="sector" class="form-label">Sector</label>
+            <div class="input-group">
+                <p class="form-control" id="sector">{{ estudiante.direccion.sector }}</p>
+            </div>
+            <label for="detalle" class="form-label">Detalles de la Dirección</label>
+            <div class="input-group">
+                <p class="form-control" id="detalle">{{ estudiante.direccion.detalle }}</p>
+            </div>
+        </div>
+        <h4 class="title-spacing">Institución</h4>
+        <div class="mt-3">
+            <label for="nombre" class="form-label">Nombre de la Institución</label>
+            <div class="input-group">
+                <p class="form-control" id="nombre">{{ estudiante.institucion.nombre }}</p>
+            </div>
+            <label for="tipo" class="form-label">Tipo de Institución</label>
+            <div class="input-group">
+                <p class="form-control" id="tipo">{{ estudiante.institucion.tipo }}</p>
+            </div>
+            <label for="nivel" class="form-label">Nivel de la Institución</label>
+            <div class="input-group">
+                <p class="form-control" id="nivel">{{ estudiante.institucion.nivel }}</p>
+            </div>
+            <label for="grado" class="form-label">Nivel Educativo</label>
+            <div class="input-group">
+                <p class="form-control" id="grado">{{ estudiante.institucion.grado }}</p>
+            </div>
+            <label for="jornada" class="form-label">Jornada</label>
+            <div class="input-group">
+                <p class="form-control" id="jornada">{{ estudiante.institucion.jornada }}</p>
+            </div>
+        </div>
+        <button class="border-0 mt-4 mb-4 rounded-pill text-white w-100 p-2" style="background-color: #25d366" (click)="downloadPDF()">
+            <h5>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-file-earmark-pdf-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M5.5 0h-4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5.5L10.5 0H5.5zm2 3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 1 .5-.5zM7 6h1v6H7V6zm2.5 1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 1 .5-.5z" />
+                </svg>
+                Descargar PDF
+            </h5>
+        </button>
+        <button class="btn btn-danger border-0 mt-4 mb-4 rounded-pill text-white w-100 p-2" (click)="volver()">
+            <h5>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                </svg>
+                Volver
+            </h5>
+        </button>
+            
+    </div>
+
+

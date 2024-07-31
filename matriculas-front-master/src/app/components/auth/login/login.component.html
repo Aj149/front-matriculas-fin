@@ -1,0 +1,33 @@
+<div
+  class="col-lg-4 col-md-8 col-sm-7 col-11 shadowss position-absolute top-50 start-50 translate-middle rounded-3 login border border-dark" >
+  <div class="container rounded-top-3 p-2" style="background-color: #273063;">
+    <div class="row" >
+      <div class="col-6 text-light text-center" >
+        <h4 class="mt-lg-4 mt-md-4">INGRESO</h4>
+        <h6>Bienvenido al sistema IEC</h6>
+      </div>
+      <div class="col-6">
+        <img width="100%" class="rounded-4"
+          src="https://firebasestorage.googleapis.com/v0/b/parte-2-b252a.appspot.com/o/Globales%2FLogo_para_navbar.jpg?alt=media&token=1bec5d87-36dd-483c-a7c1-11e6b7c650f3">
+      </div>
+    </div>
+  </div>
+  <form class="p-3" novalidate>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">NOMBRE DE USUARIO O CEDULA</label>
+      <input type="text" class="form-control" name="nombresUsuario" id="nombresUsuario" required [(ngModel)]="nombresUsuario"/>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">CLAVE</label>
+      <div class="input-group">
+        <input [type]="hide ? 'password' : 'text'" class="form-control" name="clave" id="clave" required [(ngModel)]="clave" />
+        <button class="btn btn-outline-secondary" type="button" (click)="hide = !hide">
+          <i class="fa" [ngClass]="{'fa-eye-slash': hide, 'fa-eye': !hide}"></i>
+        </button>
+      </div>
+    </div>
+    <button href="/" type="button" (click)="onLogin()" class="btn btn-outline-dark col-12 rounded-pill">
+      Ingresar
+    </button>
+  </form>
+</div>

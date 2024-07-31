@@ -1,0 +1,30 @@
+.highlight {
+    background-color: yellow;
+}
+
+body {
+    font-size: 11px;
+}
+
+table {
+  font-size: 12px;
+}
+
+.table-bordered {
+  border: 2px solid #000;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #000;
+}
+
+.text-right {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+}

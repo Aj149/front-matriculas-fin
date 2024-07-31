@@ -1,0 +1,92 @@
+<div class="container mt-4">
+  <div class="col-12 text-center">
+    <button class="btn color_boton btn-sm mb-4 rounded-pill px-4 py-2 text-white" routerLink="/dashboard/horario_new">
+      NUEVO HORARIO
+    </button>
+  </div>
+  <div class="card bg-light">
+    <div class="card-header text-center">
+      <h5>Filtro</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <label for="dia" class="form-label">Día:</label>
+          <input id="dia" type="text" class="form-control" [(ngModel)]="diaBusqueda" placeholder="Buscar por día" />
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <label for="modalidad" class="form-label">Modalidad:</label>
+          <input id="modalidad" type="text" class="form-control" [(ngModel)]="modalidadBusqueda"
+            placeholder="Buscar por modalidad" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 mb-4">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title text-center">Panel de Control de Horarios</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Dia</th>
+              <th scope="col">Horario Entrada</th>
+              <th scope="col">Horario Salida</th>
+              <th scope="col">Modalidad</th>
+              <th scope="col">Aula</th>
+              <th scope="col">Horas</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (horario of horarioList | buscadorHorario: modalidadBusqueda: diaBusqueda | paginate: { itemsPerPage:
+            11, currentPage: page }; track horario.id_horario) {
+            <tr>
+              <td class="align-middle">{{horario.dia}}</td>
+              <td class="align-middle">{{horario.horaInicio}}</td>
+              <td class="align-middle">{{horario.horaSalida}}</td>
+              <td class="align-middle">{{horario.modalidad}}</td>
+              @if (horario.modalidad === 'presencial' ) {
+                <td class="align-middle">{{ horario.aula.nombreAula }}</td>
+              }@else {
+                <td class="align-middle">Null</td>
+              }
+              <td class="align-middle">{{horario.horasDiarias}}</td>
+              <td class="align-middle">
+                <div class="btn-group d-flex" role="group">
+                  <button class="btn btn-primary btn-sm" routerLink="/dashboard/horario_edit/{{ horario.id_horario }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                      class="bi bi-pencil-square" viewBox="0 0 16 16">
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                      <path fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                    </svg>
+                  </button>
+
+                  <button class="btn btn-danger btn-sm"
+                    (click)="horario.id_horario !== undefined ? confirmarEliminar(horario.id_horario): null"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                      class="bi bi-trash-fill" viewBox="0 0 16 16">
+                      <path
+                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Anterior"
+          nextLabel="Siguiente">
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

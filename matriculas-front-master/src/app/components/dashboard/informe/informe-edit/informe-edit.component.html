@@ -1,0 +1,178 @@
+<form class="mt-5 mb-5 rounded-5 border border-3 border-custom mx-auto p-3 col-lg-9 col-11" (ngSubmit)="onUpdate()"
+  novalidate #f="ngForm">
+  <div class="mt-3 mb-4 rounded-pill text-white w-100 text-center p-2" style="background-color: #273063; border-color: #273063;">
+    <h5 style="color: #ffffff;">EDITAR INFORME DIARIO DEL ESTUDIANTE</h5>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="estudiante" class="form-label">Estudiante</label>
+        <input type="text" class="form-control rounded border border-3 border-custom" id="estudiante" name="estudiante"
+          [(ngModel)]="info.estudiante" style="border-color: #273063;">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" class="form-control rounded border border-3 border-custom" id="fecha" name="fecha"
+          [(ngModel)]="info.fecha" style="border-color: #273063;">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 mb-3">
+      <label for="usuario">Docente</label>
+      <select id="usuario" [(ngModel)]="info.instructor" class="form-control rounded border border-3 border-custom"
+        name="usuario" style="border-color: #273063;">
+        <option value="" disabled selected>Selecione un docente</option>
+        <!-- Aquí va tu loop para opciones de usuarios -->
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="hora" class="form-label">Hora</label>
+        <input type="time" class="form-control rounded border border-3 border-custom" id="hora" name="hora"
+          [(ngModel)]="info.hora" style="border-color: #273063;">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="codigo" class="form-label">Código</label>
+        <input type="text" class="form-control rounded border border-3 border-custom" id="codigo" name="codigo"
+          [(ngModel)]="info.codigo" style="border-color: #273063;">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label for="materia" class="form-label">Materia</label>
+        <input type="text" class="form-control rounded border border-3 border-custom" id="materia" name="materia"
+          [(ngModel)]="info.materia" style="border-color: #273063;">
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="text-center">
+      <label for="actividadesDiarias" class="form-label fs-4">Actividades Diarias Desarrolladas</label>
+    </div>
+    <div class="mb-3">
+      <label for="temaGeneral" class="form-label">Tema General:</label>
+      <textarea class="form-control rounded border border-3 border-custom" id="temaGeneral" name="temaGeneral" rows="3"
+        [(ngModel)]="info.tema_general" style="border-color: #273063;" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="temaSecundario" class="form-label">Tema Secundario</label>
+      <textarea class="form-control rounded border border-3 border-custom" id="temaSecundario" name="temaSecundario"
+        rows="3" [(ngModel)]="info.tema_secundario" style="border-color: #273063;" required></textarea>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="actitudEstudiante" class="form-label">Actitud del Estudiante</label>
+    <select class="form-select rounded border border-3 border-custom" aria-label="Default select example"
+      name="actitud_estudiante" [(ngModel)]="info.actitud_estudiante" style="border-color: #273063;">
+      <option selected disabled>Elegir</option>
+      <option value="Insuficiente">Insuficiente</option>
+      <option value="Regular">Regular</option>
+      <option value="Buena">Buena</option>
+      <option value="Bastante Buena">Bastante Buena</option>
+      <option value="Muy Buena">Muy Buena</option>
+      <option value="Excelente">Excelente</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="tareasEnviadas" class="form-label">Tareas Enviadas</label>
+    <input type="text" class="form-control rounded border border-3 border-custom" id="tareasEnviadas"
+      name="tareasEnviadas" [(ngModel)]="info.tareas_enviadas" style="border-color: #273063;">
+  </div>
+  <div class="mb-3">
+    <div class="text-center">
+      <label for="observacionesGenerales" class="form-label fs-4">Observaciones Generales</label>
+    </div>
+    <div class="mb-3">
+      <label for="bases" class="form-label">Bases</label>
+      <textarea class="form-control rounded border border-3 border-custom" id="bases" name="bases" rows="2"
+        [(ngModel)]="info.bases" style="border-color: #273063;"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="tareas" class="form-label">Tareas</label>
+      <textarea class="form-control rounded border border-3 border-custom" id="tareas" name="tareas" rows="2"
+        [(ngModel)]="info.tareas" style="border-color: #273063;"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="evolucionDiaria" class="form-label">Evolución Diaria</label>
+      <textarea class="form-control rounded border border-3 border-custom" id="evolucionDiaria" name="evolucionDiaria"
+        rows="2" [(ngModel)]="info.evolucion" style="border-color: #273063;"></textarea>
+    </div>
+  </div>
+  @if (isAdmin) {
+    <!-- Solo el admin puede ver esto -->
+
+  <div class="form-group table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Hora y Fecha de Llamada</th>
+          <th scope="col">Representante</th>
+          <th scope="col">Observaciones</th>
+          <th scope="col">Realizado Por</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="datetime-local" class="form-control rounded border border-3 border-custom"
+              name="horaFechaLlamada" [ngModel]="info.hora_fecha_llamada | date:'yyyy-MM-ddTHH:mm'"
+              (ngModelChange)="info.hora_fecha_llamada = $event" style="border-color: #273063;">
+          </td>
+          <td><input type="text" class="form-control rounded border border-3 border-custom" name="representante"
+              [(ngModel)]="info.representante" style="border-color: #273063;"></td>
+          <td><textarea class="form-control rounded border border-3 border-custom" name="observacionesLlamada" rows="2"
+              [(ngModel)]="info.observaciones" style="border-color: #273063;"></textarea></td>
+          <td><input type="text" class="form-control rounded border border-3 border-custom" name="realizadoPor"
+              [(ngModel)]="info.realizado_por" style="border-color: #273063;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-lg-4 text-center mt-4">
+      <hr class="mt-4 text-dark border-3" style="border-color: #273063;">
+      <label for="firmaEncargado1" class="form-label">Ing. David Robayo</label>
+      <br>
+      <label class="form-label">Director General</label>
+    </div>
+    <div class="col-md-4 col-lg-4 text-center mt-4">
+      <hr class="mt-4 text-dark border-3" style="border-color: #273063;">
+      <label for="firmaEncargado2" class="form-label">Tlga. Katherine Rosero</label>
+      <br>
+      <label class="form-label">Coordinador General</label>
+    </div>
+    <div class="col-md-4 col-lg-4 text-center mt-4">
+      <hr class="mt-4 text-dark border-3" style="border-color: #273063;">
+      <label for="firmaEncargado2" class="form-label">{{ info.instructor }}</label>
+      <br>
+      <label for="firmaEstudiante" class="form-label">Instructor</label>
+    </div>
+  </div>
+}
+  <div class="text-center mt-3">
+    <button class="btn color_boton border-0 mt-3 rounded-pill mb-1 text-white w-100 p-2 h5" [disabled]="!f.valid"
+      style="background-color: #273063;">Editar Informe</button>
+  </div>
+  <button class="btn btn-danger border-0 mt-4 rounded-pill mb-1 text-white w-100 p-2" (click)="volver()"
+    style="background-color: #e9111f;">
+    <h5>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+        class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+        <path
+          d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+      </svg>
+      Volver
+    </h5>
+  </button>
+</form>

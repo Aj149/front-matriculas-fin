@@ -1,0 +1,18 @@
+h4 {
+  font-size: 24px; /* Tamaño de fuente base */
+  white-space: normal; /* Cambiar a múltiples líneas */
+  overflow: hidden; /* Ocultar el desbordamiento */
+  text-overflow: ellipsis; /* Mostrar puntos suspensivos si se corta el texto */
+}
+
+@media (max-width: 768px) { /* Cambios para pantallas de teléfono */
+  h4 {
+    font-size: 18px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+  }
+  .img2{
+    width: 50%;
+  }
+  .texto{
+    display: none;
+  }
+}

@@ -1,0 +1,9 @@
+.telefonos{
+  opacity: 0.6;
+}
+
+@media (max-width: 500px) {
+  .telefonos{
+    width: 100%;
+  }
+}
