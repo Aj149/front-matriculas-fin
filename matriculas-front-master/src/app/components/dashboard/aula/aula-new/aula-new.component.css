@@ -1,3 +1,27 @@
 .color-boton{
   background-color: #25d366;
 }
+.swal2-popup-custom {
+  background-color: #000 !important; /* Fondo negro */
+  color: #fff !important; /* Letras blancas */
+}
+
+.swal2-title-custom {
+  color: #fff !important; /* Letras blancas */
+}
+
+.swal2-html-custom {
+  color: #fff !important; /* Letras blancas */
+}
+
+.swal2-confirm-custom {
+  background-color: #3085d6 !important;
+  color: white !important;
+  border-radius: 5px;
+}
+
+.swal2-cancel-custom {
+  background-color: #d33 !important;
+  color: white !important;
+  border-radius: 5px;
+}

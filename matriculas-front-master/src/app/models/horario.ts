@@ -36,4 +36,5 @@ export class Aula {
   id_aula?: number;
   nombreAula: string = '';
   capacidad: number = 0;
+  tipoAula?: string = '';
 }

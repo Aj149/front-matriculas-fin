@@ -58,6 +58,18 @@
         }
       </select>
       }
+
+      @if (horario.modalidad == 'virtual') {
+        <select name="aula" id="aula" class="form-control mt-3 rounded border border-3 border-info"
+          [(ngModel)]="horario.aulaId">
+          <option value="" disabled selected>Escoja un Aula</option>
+          @for (aulas of aula; track $index) {
+          <option [ngValue]="aulas.id_aula">
+            {{aulas.nombreAula}}
+          </option>
+          }
+        </select>
+        }
       <button class="color-boton border-0 mt-3 rounded-pill mb-1 text-white w-100 p-2"
         [disabled]="!f.valid" style="background-color: #273063;">
         Guardar

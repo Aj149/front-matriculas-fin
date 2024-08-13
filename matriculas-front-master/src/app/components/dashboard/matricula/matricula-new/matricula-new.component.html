@@ -87,26 +87,25 @@
     <select id="horario" [(ngModel)]="selectedHorarios" class="form-control rounded border border-3 border-info"
       (change)="onHorarioChange()" multiple name="horario">
       @for (horario of horarios | filterByModalidad: selectedModalidad; track $index) {
-      <option [value]="horario.id_horario">
-        {{ horario.dia }} - {{ horario.horaInicio }} - {{ horario.horaSalida }} - {{ horario.modalidad }}
-        @if (horario.modalidad == 'presencial') {
-        <ng-container> - {{ horario.aula.nombreAula }}</ng-container>
-        }
-      </option>
+        <option [value]="horario.id_horario">
+          {{ horario.dia }} - {{ horario.horaInicio }} - {{ horario.horaSalida }} - {{ horario.modalidad }}
+          @if ((horario.modalidad == 'presencial' || horario.modalidad == 'virtual') && horario.aula) {
+            - {{ horario.aula.nombreAula }}
+          }
+        </option>
       }
-
     </select>
-  </div>
+</div>
 
-  <div class="mt-3">
-    <h5>Horarios Seleccionados</h5>
-    <ul class="list-group list-group-flush form-control rounded border border-3 border-info">
-      @for (horarioId of matricula.programacion.horario_id; track $index) {
+<div class="mt-3">
+  <h5>Horarios Seleccionados</h5>
+  <ul class="list-group list-group-flush form-control rounded border border-3 border-info">
+    @for (horarioId of matricula.programacion.horario_id; track horarioId) {
       <li class="list-group-item">
-        {{ getHorario(horarioId)?.dia }} - {{ getHorario(horarioId)?.horaInicio }} - {{
-        getHorario(horarioId)?.horaSalida }} - {{ getHorario(horarioId)?.modalidad }}
-        @if (getHorario(horarioId)?.modalidad == 'presencial') {
-        <ng-container> - {{ getHorario(horarioId)?.aula?.nombreAula }}</ng-container>
+        {{ getHorario(horarioId)?.dia }} - {{ getHorario(horarioId)?.horaInicio }}
+        - {{ getHorario(horarioId)?.horaSalida }} - {{ getHorario(horarioId)?.modalidad }}
+        @if (getHorario(horarioId)?.modalidad == 'presencial' || getHorario(horarioId)?.modalidad == 'virtual') {
+          - {{ getHorario(horarioId)?.aula?.nombreAula }}
         }
         <button type="button" class="btn btn-danger" (click)="removeHorarioFromMatricula(horarioId)">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash-fill"
@@ -116,9 +115,9 @@
           </svg>
         </button>
       </li>
-      }
-    </ul>
-  </div>
+    }
+  </ul>
+</div>
   
   <div class="mt-3">
     <label for="turno">Turno</label>

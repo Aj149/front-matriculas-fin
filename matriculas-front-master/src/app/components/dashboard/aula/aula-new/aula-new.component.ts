@@ -18,7 +18,7 @@ export class AulaNewComponent {
 
   nombreAula = '';
   capacidad = 0;
-
+  tipoAula = '';
   constructor(
     private aulaService: AulaService,
     private toastr: ToastrService,
@@ -35,12 +35,13 @@ export class AulaNewComponent {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Sí, crear aula",
-      cancelButtonText: "Cancelar"
+      cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
         const aula = new NuevaAula();
         aula.nombreAula = this.nombreAula;
         aula.capacidad = this.capacidad;
+        aula.tipoAula = this.tipoAula; 
         this.aulaService.save(aula).subscribe(
           (data: any) => {
             Swal.fire(

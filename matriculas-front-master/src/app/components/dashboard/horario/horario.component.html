@@ -38,7 +38,7 @@
               <th scope="col">Horario Entrada</th>
               <th scope="col">Horario Salida</th>
               <th scope="col">Modalidad</th>
-              <th scope="col">Aula</th>
+              <!-- <th scope="col">Nombre Aula</th> -->
               <th scope="col">Horas</th>
               <th scope="col">Acciones</th>
             </tr>
@@ -51,11 +51,11 @@
               <td class="align-middle">{{horario.horaInicio}}</td>
               <td class="align-middle">{{horario.horaSalida}}</td>
               <td class="align-middle">{{horario.modalidad}}</td>
-              @if (horario.modalidad === 'presencial' ) {
+              <!-- @if (horario.modalidad === 'virtual' || horario.modalidad === 'presencial' ) {
                 <td class="align-middle">{{ horario.aula.nombreAula }}</td>
               }@else {
                 <td class="align-middle">Null</td>
-              }
+              } -->
               <td class="align-middle">{{horario.horasDiarias}}</td>
               <td class="align-middle">
                 <div class="btn-group d-flex" role="group">
